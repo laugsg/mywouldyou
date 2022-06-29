@@ -25,9 +25,8 @@ Sample Project [Video][4]
 ## Action Plan
 
 * Phase A: download data (Container events)
-    * Step 1 - [Connect Store](readme-assets/connect-store.md)
-    * Step 2 - Loading data into the Store
-    * Step 3 - Download & render data
+    * Step 1 - [Connect Store & Loading data](readme-assets/connect-store.md)
+    * Step 2 - [Download & render data](readme-assets/load-render.md)
 
 * Phase B: upload data (Presentational events)
     * Step 1 - Event handlers=> console.log

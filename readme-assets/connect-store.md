@@ -1,6 +1,4 @@
-# Phase A: download data (Container events)
-
-## Step 1 - Connect Store
+# Phase A: Step 1 - Connect Store
 
 To connect the store with the data it's needed:
 
