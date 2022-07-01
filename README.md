@@ -4,6 +4,21 @@ Planning out your app is imperative to success.
 
 Sample Project [Video][4]
 
+Project [Rubric][5]
+
+* log in & log out
+* Home
+    1. [ ] The answered and unanswered polls are both available at the root.
+    2. [ ] The user can alternate between viewing answered and unanswered polls.
+    3. [ ] The unanswered questions are shown by default.
+    4. [ ] The name of the logged in user is visible on the page.
+    5. [x] The user can navigate to the leaderboard.
+    6. [x] The user can navigate to the form that allows the user to create a new poll.
+
+# How to run
+
+`npm install && npm start`
+
 ## Planning Stage
 
 * Step 1 - Draw All of the Views of the App
@@ -54,3 +69,4 @@ Sample Project [Video][4]
 [2]: https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers
 [3]: https://review.udacity.com/#!/rubrics/1567/view
 [4]: https://learn.udacity.com/nanodegrees/nd019/parts/87b7741f-aace-4bc9-88f4-7feccbb6eacb/lessons/996c5cf6-3220-42f5-a780-3ab2752f2fb2/concepts/d0b35860-eabe-414e-80bb-bfc0edeab6fe
+[5]: https://review.udacity.com/#!/rubrics/1567/view

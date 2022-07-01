@@ -15,7 +15,7 @@ In charge data manipulation, they are purely operational, providing to Presentat
 
 This Component is responsible to find the questions table and get all the questions entries, then it pass the questions data object to a child Presentational Component.
 
-The presentation consist of a loop which renders each question in a Card Component where data fields are placed.
+The presentation (rendering the option one text as description) consist of a loop which renders each question in a Card Component where data fields are placed.
 
 This is the main entry point of the App because it serves the Questions, which is the whole point: Questions to be seen and answered. That is why this is the first Component to developed.
 
@@ -52,3 +52,7 @@ class ShowQuestionsContainer extends React.Component {
 }
 export default connect((state) => ({questions: state.questions}))(ShowQuestionsContainer)
 ```
+
+### Second Component: Leader Board
+
+The structure, at first glance, it's the same as first container: rendering users in place of questions. In this particular case, this component is a copy of the first which sustitutes questions by users.
