@@ -12,6 +12,10 @@ import LeaderboardContainer from "./components/LeaderboardContainer";
 import NewQuestionForm from "./components/NewQuestionForm";
 import PageWrapper from "./components/PageWrapper";
 import QuestionComponent from "./components/Question";
+import Error404 from "./components/Error404";
+
+// styles
+import "bootswatch/dist/litera/bootstrap.min.css";
 
 class App extends React.Component {
   componentDidMount() {
@@ -21,10 +25,10 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/login">
             <PageWrapper componentUsed={Login} />
           </Route>
-          <Route exact path="/home">
+          <Route exact path="/">
               {this.props.loading ? (
                 <p>Loading...</p>
               ) : (
@@ -39,6 +43,9 @@ class App extends React.Component {
           </Route>
           <Route path="/questions/:question_id">
             <PageWrapper componentUsed={QuestionComponent} />
+          </Route>
+          <Route path="/">
+            <PageWrapper componentUsed={Error404} />
           </Route>
         </Switch>
       </Router>

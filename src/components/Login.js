@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { CardLogin } from './Card'
+import { dataObjectUsers } from '../utils/helpers'
 
 class Login extends React.Component {
     render(){
-        return(
-            'login'
-        )
+        return <CardLogin users={this.props.users}/>
     }
 }
 
-export default connect()(Login)
+export default connect(dataObjectUsers)(Login)

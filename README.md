@@ -6,14 +6,67 @@ Sample Project [Video][4]
 
 Project [Rubric][5]
 
+* 404 Error Page
+    1. [ ] and shows a 404 page if that poll does not exist. 
+    2. [ ] new polls will not be accessible at their url showing a 404 page
+
 * log in & log out
-* Home
-    1. [ ] The answered and unanswered polls are both available at the root.
+    1. [ ] Not logged in Users are not allowed to see poll/results
+    2. [ ] The application asks the user to sign in 
+    3. [ ] if !store:authedUser return Redirect to Component (react-router-dom)...
+
+* Show Questions Component
+    1. [x] The answered and unanswered polls are both available at the root (`/`).
     2. [ ] The user can alternate between viewing answered and unanswered polls.
     3. [ ] The unanswered questions are shown by default.
-    4. [ ] The name of the logged in user is visible on the page.
-    5. [x] The user can navigate to the leaderboard.
-    6. [x] The user can navigate to the form that allows the user to create a new poll.
+    4. [ ] Question in correct category (answered/Unanswered)
+    5. [ ] An answered question links its details.
+    6. [ ] Order is from recent to old.
+ 
+* Questions Component
+    1. [x] The details of the poll are available at `questions/:question_id`
+    2. [x] unanswered/answered polls on the home page
+   
+    3. [ ] Card Component
+          1. [x] Unanswered, the following is shown:
+             1. [x] the text “Would You Rather”
+             2. [x] the avatar of the user
+             3. [x] the two options.
+
+          2. [ ] Answered, the following is shown:
+             1. [ ] The option selected should be clearly marked.
+             2. [ ] the number of people who voted for that option;
+             3. [ ] the percentage of people who voted for that option.
+   
+    4. [ ] Upon voting:
+          1. [ ] The user’s response is recorded **(Behavioural Event)**
+          2. [ ] the question appears in the “Answered” column.
+
+* New Question Component
+    1. [x] The form is available at `/add`.
+    2. [x] shows “Would You Rather” and a form for two options.
+    3. [ ] Upon submitting the user is taken to home page.
+    4. [ ] The new question appears in unanswered questions.
+
+* Leader Board Component
+    1. [x] The Leaderboard is available at `/leaderboard`
+    2. [ ] Each entry on the leaderboard contains the following:
+          1. [x] the user’s name
+          2. [x] the user’s picture
+          3. [ ] the number of questions the user asked
+          4. [ ] the number of questions the user answered.
+    3. [ ] User in descending order based on the sum answered question and questions they’ve asked.
+
+* Navigation
+    1. [ ] The name of the logged in user is visible on the page.
+    2. [x] The user can navigate to the leaderboard.
+    3. [x] The user can navigate to the form that allows the user to create a new poll.
+    4. [x] The app contains a navigation bar that is visible on all of the pages.
+    5. [x] allow navigation between creating new polls, leaderboard page and the home page.
+
+* Architecture Spec
+    1. [ ] Form inputs and controlled components may have some state handled by the component.
+
 
 # How to run
 
@@ -47,6 +100,17 @@ Project [Rubric][5]
     * Step 1 - Event handlers=> console.log
     * Step 2 - Replace console.log by dispatch (actions)
 
+* Phase C: aritmethic operations
+    * Step 1 - Operations needed recognition
+    * Step 2 - Create base operations helpers
+    * Step 3 - Create advance operations helpers
+    * Step 4 - Require operations as API
+
+* Phase D: logic operations
+    * Step 1 - Matchs needed recognition (users/quesstions)
+    * Step 3 - Data Helpers 
+        * move data across app (unanswered/answered)
+        * upload data to store
 
 
 

@@ -1,12 +1,11 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
+import { CardFormNewQuestion } from "./Card";
 
 class NewQuestionForm extends React.Component {
-    render(){
-        return(
-            'New Question Form'
-        )
-    }
+  render() {
+    return <CardFormNewQuestion />
+  }
 }
 
-export default connect()(NewQuestionForm)
+export default connect()(NewQuestionForm);
