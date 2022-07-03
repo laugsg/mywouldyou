@@ -8,7 +8,7 @@ Project [Rubric][5]
 
 * 404 Error Page
     1. [ ] and shows a 404 page if that poll does not exist. 
-    2. [ ] new polls will not be accessible at their url showing a 404 page
+    2. [ ] new polls not accessible by url showing a 404 page
 
 * log in & log out
     1. [x] Not logged in Users are not allowed to see poll/results
@@ -16,30 +16,30 @@ Project [Rubric][5]
     3. [x] if !store:authedUser return Redirect to Component (react-router-dom)...
 
 * Show Questions Component
-    1. [x] The answered and unanswered polls are both available at the root (`/`).
-    2. [x] The user can alternate between viewing answered and unanswered polls.
+    1. [x] answered/unanswered available at the root (`/`).
+    2. [x] The user can alternate between answered/unanswered.
     3. [x] The unanswered questions are shown by default.
     4. [x] Question in correct category (answered/Unanswered)
-    5. [ ] An answered question links its details.
+    5. [x] An answered question links its details.
     6. [ ] Order is from recent to old.
  
 * Questions Component
-    1. [x] The details of the poll are available at `questions/:question_id`
+    1. [x] poll details at `questions/:question_id`
     2. [x] unanswered/answered polls on the home page
    
-    3. [ ] Card Component
+    3. [x] Card Component
           1. [x] Unanswered, the following is shown:
              1. [x] the text “Would You Rather”
              2. [x] the avatar of the user
              3. [x] the two options.
 
-          2. [ ] Answered, the following is shown:
-             1. [ ] The option selected should be clearly marked.
-             2. [ ] the number of people who voted for that option;
-             3. [ ] the percentage of people who voted for that option.
+          2. [x] Answered, the following is shown:
+             1. [x] The option selected should be clearly marked.
+             2. [x] the number of people who voted for that option;
+             3. [x] the percentage of votes for that option.
    
     4. [ ] Upon voting:
-          1. [ ] The user’s response is recorded **(Behavioural Event)**
+          1. [ ] The user’s response is recorded
           2. [ ] the question appears in the “Answered” column.
 
 * New Question Component
@@ -55,14 +55,14 @@ Project [Rubric][5]
           2. [x] the user’s picture
           3. [ ] the number of questions the user asked
           4. [ ] the number of questions the user answered.
-    3. [ ] User in descending order based on the sum answered question and questions they’ve asked.
+    3. [ ] descending order based on the sum answered question and questions they’ve asked.
 
 * Navigation
     1. [ ] The name of the logged in user is visible on the page.
     2. [x] The user can navigate to the leaderboard.
-    3. [x] The user can navigate to the form that allows the user to create a new poll.
-    4. [x] The app contains a navigation bar that is visible on all of the pages.
-    5. [x] allow navigation between creating new polls, leaderboard page and the home page.
+    3. [x] The user can navigate to the form to create a new poll.
+    4. [x] The app contains a navigation visible in all pages.
+    5. [x] navigation between new/polls, leaderboard and home.
 
 * Architecture Spec
     1. [ ] Form inputs and controlled components may have some state handled by the component.
