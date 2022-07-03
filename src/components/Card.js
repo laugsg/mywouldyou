@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function CardQuestion({ entry }) {
   const [isChecked, seIisChecked] = React.useState("");
-  // console.log(isChecked);
+  console.log(isChecked);
   return (
     <div className="card m-1" style={{ width: "30rem" }}>
       <div className="card-header">
@@ -101,7 +101,7 @@ export function CardPoll({ entry }) {
               class={`progress-bar ${
                 perOne > perTwo
                   ? "bg-success"
-                  : perOne == perTwo
+                  : perOne === perTwo
                   ? ""
                   : "bg-danger"
               }`}
@@ -125,7 +125,7 @@ export function CardPoll({ entry }) {
               class={`progress-bar ${
                 perTwo > perOne
                   ? "bg-success"
-                  : perOne == perTwo
+                  : perOne === perTwo
                   ? ""
                   : "bg-danger"
               }`}

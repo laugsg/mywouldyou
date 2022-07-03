@@ -74,7 +74,7 @@ export function dataQuestionQuality(state) {
   }
   for (const keyQ in questions) {
     for (const keyU in users[authedUser].answers) {
-      if (keyQ == keyU) {
+      if (keyQ === keyU) {
         delete unanswered[keyU];
       }
     }
