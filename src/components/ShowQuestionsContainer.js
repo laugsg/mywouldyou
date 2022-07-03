@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { newDataObjectQuestions } from "../utils/helpers";
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
 // Components
 import List from "./List";
@@ -10,13 +10,8 @@ import { CardQuestion } from "./Card";
 
 class ShowQuestionsContainer extends React.Component {
   render() {
-    /** Unanswered/Answered 
-     * Unanswered/Answered rely on user, it means
-     * "if username has voted on question is answered"
-     */
-    console.log(this.props.questions)
     return (
-      this.props.questions && (
+      this.props.unanswered && (
         <>
           <Tabs
             defaultActiveKey="unanswered"
@@ -24,17 +19,20 @@ class ShowQuestionsContainer extends React.Component {
             className="mb-3"
           >
             <Tab eventKey="unanswered" title="Unanswered">
-            Unanswered
+              <List
+                componentUsed={CardQuestion}
+                componentPropName="entry"
+                data={this.props.unanswered}
+              />
             </Tab>
             <Tab eventKey="answered" title="Answered">
-            Answered
+              <List
+                componentUsed={CardQuestion}
+                componentPropName="entry"
+                data={this.props.answered}
+              />
             </Tab>
           </Tabs>
-          <List
-            componentUsed={CardQuestion}
-            componentPropName="entry"
-            data={this.props.questions}
-          />
         </>
       )
     );

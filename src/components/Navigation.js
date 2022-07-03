@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { dataObjectAuthedUser } from "../utils/helpers";
 
 // styles
 import logo from "../logo.svg";
@@ -19,18 +20,18 @@ class Navigation extends React.Component {
               height="36"
             />
           </span>
-          <ul className="navbar-nav d-flex flex-row">
+          <ul className="navbar-nav d-flex flex-row align-items-center">
             <li className="navbar-item ms-1">
               <Link to="/">Home</Link>
-            </li>
-            <li className="navbar-item ms-1">
-              <Link to="/login">Login</Link>
             </li>
             <li className="navbar-item ms-1">
               <Link to="/leaderboard">Leader Board</Link>
             </li>
             <li className="navbar-item ms-1">
               <Link to="/add">New Question</Link>
+            </li>
+            <li className="navbar-item ms-1">
+              <button onClick={this.props.handleLogOut} className="btn btn-outline-danger">Log Out</button>
             </li>
           </ul>
         </div>
@@ -39,4 +40,4 @@ class Navigation extends React.Component {
   }
 }
 
-export default connect()(Navigation);
+export default connect(dataObjectAuthedUser)(Navigation);

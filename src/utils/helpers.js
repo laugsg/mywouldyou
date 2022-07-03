@@ -1,66 +1,119 @@
-/** New Data object for Questions : Cross Data Operation for Cards
- * Add to each question, the user data needed
- * to render the Question Class Card (home question preview)
- * as Name of question author (user id) and their Avatar image.
- *
- * For each question, user table should be consult,
- * compare the author (user id) with keys of the user table,
- * then get the entry when coincidence occurs,
- * finally add that entry in the question object.
- */
-export function newDataObjectQuestions(state) {
-  // question Array of objects
-  const qArr = Object.keys(state.questions).map((key) => state.questions[key]);
-  // user Array of objects
-  const uArr = Object.keys(state.users).map((key) => state.users[key]);
-  // New Data object
-  const newQ = qArr.map((q) => {
-    let match = uArr.filter((user) => q.author === user.id);
-    return {
-      ...q,
-      user: match[0],
-    };
-  });
-  return {
-    // convert questions object to Array
-    // questions: Object.keys(state.questions).map((key) => state.questions[key]),
-    questions: newQ,
-  };
-}
-
 /** New Data object for Users > Leader Board
  */
-export function newDataObjectUsers(state) {
-  // question Array of objects
-  const qArr = Object.keys(state.questions).map((key) => state.questions[key]);
-  // user Array of objects
-  const uArr = Object.keys(state.users).map((key) => state.users[key]);
-  // New Data object
+function newDataObjectForUsers(receiver, included) {
+  const uArr = Object.keys(receiver).map((key) => receiver[key]);
+  const qArr = Object.keys(included).map((key) => included[key]);
+
   const newU = uArr.map((user) => {
+    /** this line is unmutable because properties */
     let match = qArr.filter((q) => user.id === q.author);
+    console.log(match)
     return {
       ...user,
       questions: match,
     };
   });
+  return newU;
+}
+
+export function newDataObjectUsers(state) {
+  const newU = newDataObjectForUsers(state.users, state.questions);
   return {
-    // convert questions object to Array
-    // questions: Object.keys(state.questions).map((key) => state.questions[key]),
     users: newU,
   };
 }
 
-// User data for Login
+// return user data
 export function dataObjectUsers(state) {
-
-  // array of users with key as number
-  let oldU = Object.keys(state.users).map((key) => {
-    return state.users[key]
-  })
-
   return {
-    // convert questions object to Array
-    // users: Object.keys(state.users).map((key, index) => state.users[key]),
-    users: state.users
+    users: dataUsers(state),
+  };
+}
+
+// return authedUser
+export function dataAuthedUser(state) {
+  return state.authedUser;
+}
+
+// return user
+export function dataUsers(state) {
+  return state.users;
+}
+
+// return questions
+export function dataQuestions(state) {
+  return state.questions;
+}
+
+// User data for Login
+export function dataLogin(state) {
+  return {
+    users: dataUsers(state),
+    authedUser: dataAuthedUser(state),
+  };
+}
+
+// User data for Navigation
+export function dataObjectAuthedUser(state) {
+  return {
+    authedUser: dataAuthedUser(state),
+  };
+}
+
+/**
+ * Cross user answered question with question id
+ * to get two arrays answered/unanswered questions
+ */
+export function dataQuestionQuality(state) {
+  const users = dataUsers(state);
+  const questions = dataQuestions(state);
+  const authedUser = dataAuthedUser(state);
+  let answered = [];
+  let unanswered = Object.fromEntries(Object.entries(questions));
+  for (const keyU in users[authedUser].answers) {
+    answered.push([keyU, questions[keyU]]);
+  }
+  for (const keyQ in questions) {
+    for (const keyU in users[authedUser].answers) {
+      if (keyQ == keyU) {
+        delete unanswered[keyU];
+      }
+    }
+  }
+  return {
+    answered: Object.fromEntries(answered),
+    unanswered: unanswered,
+  };
+}
+
+/** Include an Object into a receiver
+ * Add to each question, the user data needed.
+ * Given two arrays of objects
+ * include the user data needed into the first array
+ */
+function newDataObjectForQuestions(receiver, included) {
+  const qArr = Object.keys(receiver).map((key) => receiver[key]);
+  const uArr = Object.keys(included).map((key) => included[key]);
+
+  const newQ = qArr.map((q) => {
+    let match = uArr.filter((user) => q.author === user.id);
+    return {
+      ...q,
+      /** this line is unmutable because index */
+      user: match[0],
+    };
+  });
+  return newQ;
+}
+
+export function newDataObjectQuestions(state) {
+  const questionQuality = dataQuestionQuality(state);
+  return {
+    unanswered: newDataObjectForQuestions(
+      questionQuality.unanswered,
+      state.users
+    ),
+    answered: newDataObjectForQuestions(questionQuality.answered, state.users),
+    questions: newDataObjectForQuestions(state.questions, state.users),
   };
 }

@@ -1,12 +1,23 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { CardLogin } from './Card'
-import { dataObjectUsers } from '../utils/helpers'
+import React from "react";
+import { connect } from "react-redux";
+import { CardLogin } from "./Card";
+import { dataLogin } from "../utils/helpers";
+import { setAuthedUser } from "../actions/authedUser";
+import RedirectComponent from "./RedirectComponent";
 
 class Login extends React.Component {
-    render(){
-        return <CardLogin users={this.props.users}/>
+  render() {
+    console.log("login",this.props);
+    const handleLogin = (id) => {
+      this.props.dispatch(setAuthedUser(id));
+    };
+    if (!this.props.authedUser) {
+        return <CardLogin users={this.props.users} login={handleLogin} />;
     }
+    else {
+        return <RedirectComponent desiredPath={'/'}/>
+    }
+  }
 }
 
-export default connect(dataObjectUsers)(Login)
+export default connect(dataLogin)(Login);

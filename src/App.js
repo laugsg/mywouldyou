@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { receiveInitialData } from "./actions/shared";
 
 // Components
-import ShowQuestionsContainer from "./components/ShowQuestionsContainer";
 import Login from "./components/Login";
 import LeaderboardContainer from "./components/LeaderboardContainer";
 import NewQuestionForm from "./components/NewQuestionForm";
@@ -16,6 +15,7 @@ import Error404 from "./components/Error404";
 
 // styles
 import "bootswatch/dist/litera/bootstrap.min.css";
+import HomeComponent from "./components/HomeComponent";
 
 class App extends React.Component {
   componentDidMount() {
@@ -26,14 +26,12 @@ class App extends React.Component {
       <Router>
         <Switch>
           <Route exact path="/login">
-            <PageWrapper componentUsed={Login} />
+            <div className="d-flex flex-column align-items-center p-5">
+              <Login />
+            </div>
           </Route>
           <Route exact path="/">
-              {this.props.loading ? (
-                <p>Loading...</p>
-              ) : (
-                <PageWrapper componentUsed={ShowQuestionsContainer} />
-              )}
+            <HomeComponent />
           </Route>
           <Route exact path="/leaderboard">
             <PageWrapper componentUsed={LeaderboardContainer} />

@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { dataObjectUsers } from "../utils/helpers";
 
 export function CardQuestionClass({ entry }) {
   const [isChecked, seIisChecked] = React.useState("");
@@ -48,6 +46,27 @@ export function CardQuestionClass({ entry }) {
     </div>
   );
 }
+
+// export function CardQuestionOld({ entry }) {
+//   // console.log("entry",entry);
+//   return (
+//     <div className="card m-1" style={{ width: "20rem" }}>
+//       <div className="card-header">
+//         <img src={entry.user.avatarURL} style={avatar} alt="User Avatar" />
+//         {entry.user.name} asks:
+//       </div>
+//       <div className="card-body">
+//         <h5 className="card-title">Would you rather...</h5>
+//         <p>{entry.optionOne.text}</p>
+//         <Link style={{ color: "inherit" }} to={`/questions/${entry.id}`}>
+//           <button type="button" className="btn btn-primary">
+//             View Question
+//           </button>
+//         </Link>
+//       </div>
+//     </div>
+//   );
+// }
 
 export function CardQuestion({ entry }) {
   // console.log("entry",entry);
@@ -136,11 +155,13 @@ export function CardFormNewQuestion({ entry }) {
   );
 }
 
-export const CardLogin = ({ users }) => {
+export const CardLogin = ({ users, login }) => {
   const [getValue, setValue] = React.useState(false);
+  const handleSubmit = () => {
+    login( getValue )
+  }
   return (
-    <form
-      onSubmit={(e) => e.preventDefault()}
+    <div
       className="d-flex flex-column align-items-center"
     >
       <img
@@ -165,10 +186,10 @@ export const CardLogin = ({ users }) => {
         ))}
       </select>
 
-      <button className="w-100 btn btn-lg btn-primary" type="submit">
+      <button disabled={!getValue} onClick={handleSubmit} className={`w-100 btn btn-lg btn-${!getValue ? 'secondary' : 'primary'}`} type="button">
         Sign in
       </button>
-    </form>
+    </div>
   );
 };
 

@@ -125,7 +125,13 @@ Project [Rubric][5]
 
 
 
+## @NOTES:
 
+### Step 2 - ~~Download &~~ render data
+
+After certain point, this is when the app is connected, the containers receives the data to pas it into their children and Presentational components place the data correctly.
+
+To go further, it's needed to develop the login process, this is _to set a user on who base the dowloaded data_ as unanswered/answered questions, create/responses questions, and protected/redirect routes for un-authenticated users.
 
 
 
