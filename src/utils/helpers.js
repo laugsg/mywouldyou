@@ -7,7 +7,6 @@ function newDataObjectForUsers(receiver, included) {
   const newU = uArr.map((user) => {
     /** this line is unmutable because properties */
     let match = qArr.filter((q) => user.id === q.author);
-    console.log(match)
     return {
       ...user,
       questions: match,
@@ -109,10 +108,8 @@ function newDataObjectForQuestions(receiver, included) {
 export function newDataObjectQuestions(state) {
   const questionQuality = dataQuestionQuality(state);
   return {
-    unanswered: newDataObjectForQuestions(
-      questionQuality.unanswered,
-      state.users
-    ),
+    authedUser: state.authedUser,
+    unanswered: newDataObjectForQuestions(questionQuality.unanswered, state.users),
     answered: newDataObjectForQuestions(questionQuality.answered, state.users),
     questions: newDataObjectForQuestions(state.questions, state.users),
   };

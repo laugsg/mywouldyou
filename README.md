@@ -11,15 +11,15 @@ Project [Rubric][5]
     2. [ ] new polls will not be accessible at their url showing a 404 page
 
 * log in & log out
-    1. [ ] Not logged in Users are not allowed to see poll/results
-    2. [ ] The application asks the user to sign in 
-    3. [ ] if !store:authedUser return Redirect to Component (react-router-dom)...
+    1. [x] Not logged in Users are not allowed to see poll/results
+    2. [x] The application asks the user to sign in 
+    3. [x] if !store:authedUser return Redirect to Component (react-router-dom)...
 
 * Show Questions Component
     1. [x] The answered and unanswered polls are both available at the root (`/`).
-    2. [ ] The user can alternate between viewing answered and unanswered polls.
-    3. [ ] The unanswered questions are shown by default.
-    4. [ ] Question in correct category (answered/Unanswered)
+    2. [x] The user can alternate between viewing answered and unanswered polls.
+    3. [x] The unanswered questions are shown by default.
+    4. [x] Question in correct category (answered/Unanswered)
     5. [ ] An answered question links its details.
     6. [ ] Order is from recent to old.
  

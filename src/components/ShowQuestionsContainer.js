@@ -6,7 +6,7 @@ import Tab from "react-bootstrap/Tab";
 
 // Components
 import List from "./List";
-import { CardQuestion } from "./Card";
+import { CardQuestionClass } from "./Card";
 
 class ShowQuestionsContainer extends React.Component {
   render() {
@@ -20,14 +20,14 @@ class ShowQuestionsContainer extends React.Component {
           >
             <Tab eventKey="unanswered" title="Unanswered">
               <List
-                componentUsed={CardQuestion}
+                componentUsed={CardQuestionClass}
                 componentPropName="entry"
                 data={this.props.unanswered}
               />
             </Tab>
             <Tab eventKey="answered" title="Answered">
               <List
-                componentUsed={CardQuestion}
+                componentUsed={CardQuestionClass}
                 componentPropName="entry"
                 data={this.props.answered}
               />

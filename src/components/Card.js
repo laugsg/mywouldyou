@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export function CardQuestionClass({ entry }) {
+export function CardQuestion({ entry }) {
   const [isChecked, seIisChecked] = React.useState("");
-  console.log(isChecked);
+  // console.log(isChecked);
   return (
     <div className="card m-1" style={{ width: "30rem" }}>
       <div className="card-header">
@@ -47,29 +47,7 @@ export function CardQuestionClass({ entry }) {
   );
 }
 
-// export function CardQuestionOld({ entry }) {
-//   // console.log("entry",entry);
-//   return (
-//     <div className="card m-1" style={{ width: "20rem" }}>
-//       <div className="card-header">
-//         <img src={entry.user.avatarURL} style={avatar} alt="User Avatar" />
-//         {entry.user.name} asks:
-//       </div>
-//       <div className="card-body">
-//         <h5 className="card-title">Would you rather...</h5>
-//         <p>{entry.optionOne.text}</p>
-//         <Link style={{ color: "inherit" }} to={`/questions/${entry.id}`}>
-//           <button type="button" className="btn btn-primary">
-//             View Question
-//           </button>
-//         </Link>
-//       </div>
-//     </div>
-//   );
-// }
-
-export function CardQuestion({ entry }) {
-  // console.log("entry",entry);
+export function CardQuestionClass({ entry }) {
   return (
     <div className="card m-1" style={{ width: "20rem" }}>
       <div className="card-header">
@@ -84,6 +62,83 @@ export function CardQuestion({ entry }) {
             View Question
           </button>
         </Link>
+      </div>
+    </div>
+  );
+}
+
+export function CardPoll({ entry }) {
+  // console.log("entry", entry);
+
+  // Votes
+  // count voutes
+  const votesOne = entry.optionOne.votes.length;
+  const votesTwo = entry.optionTwo.votes.length;
+
+  // total votes
+  const totalVotes = votesOne + votesTwo;
+
+  // percentage
+  const perOne = (votesOne * 100) / totalVotes;
+  const perTwo = (votesTwo * 100) / totalVotes;
+
+  const myVoteOne = entry.optionOne.votes.includes(entry.authedUser);
+  const myVoteTwo = entry.optionTwo.votes.includes(entry.authedUser);
+
+  return (
+    <div className="card m-1" style={{ width: "20rem" }}>
+      <div className="card-header">
+        <img src={entry.user.avatarURL} style={avatar} alt="User Avatar" />
+        Asked by {entry.user.name}
+      </div>
+      <div className="card-body">
+        <h5 className="card-title">Would you rather...</h5>
+
+        <div className="container" style={myVoteOne ? selected : {}}>
+          <p>{entry.optionOne.text}</p>
+          <div class="progress my-1">
+            <div
+              class={`progress-bar ${
+                perOne > perTwo
+                  ? "bg-success"
+                  : perOne == perTwo
+                  ? ""
+                  : "bg-danger"
+              }`}
+              role="progressbar"
+              style={{ width: `${perOne ? perOne : "12"}%` }}
+            >
+              {perOne ? perOne : "0"}%
+            </div>
+          </div>
+          <p>
+            {votesOne ? votesOne : "0"} out of {totalVotes} votes
+          </p>
+        </div>
+
+        <hr />
+
+        <div className="container" style={myVoteTwo ? selected : {}}>
+          <p>{entry.optionTwo.text}</p>
+          <div class="progress my-1">
+            <div
+              class={`progress-bar ${
+                perTwo > perOne
+                  ? "bg-success"
+                  : perOne == perTwo
+                  ? ""
+                  : "bg-danger"
+              }`}
+              role="progressbar"
+              style={{ width: `${perTwo ? perTwo : "12"}%` }}
+            >
+              {perTwo}%
+            </div>
+          </div>
+          <p>
+            {votesTwo ? votesTwo : "0"} out of {totalVotes} votes
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -158,12 +213,10 @@ export function CardFormNewQuestion({ entry }) {
 export const CardLogin = ({ users, login }) => {
   const [getValue, setValue] = React.useState(false);
   const handleSubmit = () => {
-    login( getValue )
-  }
+    login(getValue);
+  };
   return (
-    <div
-      className="d-flex flex-column align-items-center"
-    >
+    <div className="d-flex flex-column align-items-center">
       <img
         className="mb-4"
         src={getValue ? users[getValue].avatarURL : "https://bit.ly/3tJs7bg"}
@@ -186,7 +239,14 @@ export const CardLogin = ({ users, login }) => {
         ))}
       </select>
 
-      <button disabled={!getValue} onClick={handleSubmit} className={`w-100 btn btn-lg btn-${!getValue ? 'secondary' : 'primary'}`} type="button">
+      <button
+        disabled={!getValue}
+        onClick={handleSubmit}
+        className={`w-100 btn btn-lg btn-${
+          !getValue ? "secondary" : "primary"
+        }`}
+        type="button"
+      >
         Sign in
       </button>
     </div>
@@ -196,4 +256,9 @@ export const CardLogin = ({ users, login }) => {
 const avatar = {
   width: "40px",
   height: "40px",
+};
+
+const selected = {
+  border: "2px solid #f0ad4e",
+  padding: "10px",
 };
