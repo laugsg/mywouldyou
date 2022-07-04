@@ -52,9 +52,16 @@ export function dataLogin(state) {
   };
 }
 
-// User data for Navigation
 export function dataObjectAuthedUser(state) {
   return {
+    authedUser: dataAuthedUser(state),
+  };
+}
+
+// User data for Navigation
+export function dataObjectNavigation(state) {
+  return {
+    users: dataUsers(state),
     authedUser: dataAuthedUser(state),
   };
 }
@@ -109,7 +116,10 @@ export function newDataObjectQuestions(state) {
   const questionQuality = dataQuestionQuality(state);
   return {
     authedUser: state.authedUser,
-    unanswered: newDataObjectForQuestions(questionQuality.unanswered, state.users),
+    unanswered: newDataObjectForQuestions(
+      questionQuality.unanswered,
+      state.users
+    ),
     answered: newDataObjectForQuestions(questionQuality.answered, state.users),
     questions: newDataObjectForQuestions(state.questions, state.users),
   };

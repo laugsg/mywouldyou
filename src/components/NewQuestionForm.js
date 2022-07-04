@@ -4,7 +4,12 @@ import { CardFormNewQuestion } from "./Card";
 
 class NewQuestionForm extends React.Component {
   render() {
-    return <CardFormNewQuestion />
+
+    const handleSubmit = () => {
+      console.log("submit")
+    };
+
+    return <CardFormNewQuestion handleSubmit={handleSubmit} />
   }
 }
 

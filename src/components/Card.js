@@ -96,9 +96,9 @@ export function CardPoll({ entry }) {
 
         <div className="container" style={myVoteOne ? selected : {}}>
           <p>{entry.optionOne.text}</p>
-          <div class="progress my-1">
+          <div className="progress my-1">
             <div
-              class={`progress-bar ${
+              className={`progress-bar ${
                 perOne > perTwo
                   ? "bg-success"
                   : perOne === perTwo
@@ -120,9 +120,9 @@ export function CardPoll({ entry }) {
 
         <div className="container" style={myVoteTwo ? selected : {}}>
           <p>{entry.optionTwo.text}</p>
-          <div class="progress my-1">
+          <div className="progress my-1">
             <div
-              class={`progress-bar ${
+              className={`progress-bar ${
                 perTwo > perOne
                   ? "bg-success"
                   : perOne === perTwo
@@ -145,32 +145,44 @@ export function CardPoll({ entry }) {
 }
 
 export function CardUser({ entry }) {
-  // console.log("entry", entry);
   return (
     <div className="card m-1" style={{ width: "20rem" }}>
       <div className="card-header">
         <img src={entry.avatarURL} style={avatar} alt="User Avatar" />
         {entry.name}
       </div>
+
       <div className="card-body">
         <h5 className="card-title">Would you rather...</h5>
-        {/* <p>{entry.questions.optionOne.text}</p> */}
-        {entry.questions.map((txt, i) => (
-          <p key={i}>{txt.optionOne.text}</p>
-        ))}
 
-        <Link style={{ color: "inherit" }} to={`/questions/${entry.id}`}>
-          <button type="button" className="btn btn-primary">
-            View Question
-          </button>
-        </Link>
+        <div className="d-flex align-items-center">
+          <div className="text">
+            <p>Questions asked - {entry.score.totalAskd}</p>
+            <p>Questions answered - {entry.score.totalAnsw}</p>
+          </div>
+
+          <div
+            className="ms-3 text-white bg-success"
+            style={{ borderRadius: "10px" }}
+          >
+            <div className="card-header">Score</div>
+            <div className="card-body text-center">{entry.score.totalQ}</div>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-export function CardFormNewQuestion({ entry }) {
-  // console.log("entry",entry);
+export function CardFormNewQuestion({ handleSubmit }) {
+  const [optionOne, setOptionOne] = React.useState("");
+  const [optionTwo, setOptionTwo] = React.useState("");
+
+  const maxChar = 5
+
+  const handleClick = () => {
+    handleSubmit()
+  };
   return (
     <form className="card m-1" style={{ width: "20rem" }}>
       <div className="card-header">
@@ -182,11 +194,17 @@ export function CardFormNewQuestion({ entry }) {
             Option One
           </label>
           <input
+            onChange={(e) => setOptionOne(e.target.value)}
             type="text"
             className="form-control"
             id="optionOne"
             placeholder="Provide an option..."
           />
+          {optionOne.length < maxChar ? (
+            <span className="small text-muted">
+              Minimum characters {maxChar - optionOne.length}
+            </span>
+          ) : null}
         </div>
 
         <div className="mb-3">
@@ -194,15 +212,42 @@ export function CardFormNewQuestion({ entry }) {
             Option Two
           </label>
           <input
+            onChange={(e) => setOptionTwo(e.target.value)}
             type="text"
             className="form-control"
             id="optionTwo"
             placeholder="Provide an option..."
           />
+          {optionTwo.length < maxChar ? (
+            <span className="small text-muted">
+              Minimum characters {maxChar - optionTwo.length}
+            </span>
+          ) : null}
         </div>
       </div>
-      <div className="card-footer">
-        <button type="button" className="btn btn-primary">
+      <div className="card-footer text-center">
+        <button
+          onClick={handleClick}
+          disabled={
+            /**
+             * Is it true that it's false both expressions <= maxChar, AND,
+             * Is it false that it's false both expressions (true) && (true): yes.
+             * yes, it's true, that it's false that both expression are false.
+             * Then, if it evaluates to false: disabled:true
+             * or if it evalutates to true: disabled:true.
+             *
+             * This means, the value is <= maxChar when nothing is wrote,
+             * the opossite of this is false,
+             * once more, the global wrapper set the opposite, which is true,
+             * So, if the ecuation is true: disabled:true.
+             */
+            !(!(optionOne.length < maxChar) && !(optionTwo.length < maxChar))
+              ? true
+              : false
+          }
+          type="button"
+          className="btn btn-primary"
+        >
           Submit Question
         </button>
       </div>

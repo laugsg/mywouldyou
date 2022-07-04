@@ -1,24 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { dataObjectAuthedUser } from "../utils/helpers";
+import { dataObjectNavigation } from "../utils/helpers";
 
 // styles
-import logo from "../logo.svg";
 import "../App.css";
 class Navigation extends React.Component {
   render() {
+    const name = this.props.users[this.props.authedUser].name
+    const avatar = this.props.users[this.props.authedUser].avatarURL
     return (
       <nav className="navbar bg-light">
         <div className="container">
           <span className="navbar-brand">
             <img
               className="App-logo"
-              src={logo}
+              src={avatar}
               alt="Rotationg Atom with its orbits"
               width="50"
               height="36"
             />
+            {name}
           </span>
           <ul className="navbar-nav d-flex flex-row align-items-center">
             <li className="navbar-item ms-1">
@@ -40,4 +42,4 @@ class Navigation extends React.Component {
   }
 }
 
-export default connect(dataObjectAuthedUser)(Navigation);
+export default connect(dataObjectNavigation)(Navigation);

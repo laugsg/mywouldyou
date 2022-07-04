@@ -50,22 +50,22 @@ Project [Rubric][5]
 
 * Leader Board Component
     1. [x] The Leaderboard is available at `/leaderboard`
-    2. [ ] Each entry on the leaderboard contains the following:
+    2. [x] Each entry on the leaderboard contains the following:
           1. [x] the user’s name
           2. [x] the user’s picture
-          3. [ ] the number of questions the user asked
-          4. [ ] the number of questions the user answered.
-    3. [ ] descending order based on the sum answered question and questions they’ve asked.
+          3. [x] the number of questions the user asked
+          4. [x] the number of questions the user answered.
+    3. [x] descending order based on sum of questions answered/asked.
 
 * Navigation
-    1. [ ] The name of the logged in user is visible on the page.
+    1. [x] The name of the logged in user is visible on the page.
     2. [x] The user can navigate to the leaderboard.
     3. [x] The user can navigate to the form to create a new poll.
     4. [x] The app contains a navigation visible in all pages.
     5. [x] navigation between new/polls, leaderboard and home.
 
 * Architecture Spec
-    1. [ ] Form inputs and controlled components may have some state handled by the component.
+    1. [x] inputs and controlled components may have state.
 
 
 # How to run

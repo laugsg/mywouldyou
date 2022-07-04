@@ -7,7 +7,7 @@ import RedirectComponent from "./RedirectComponent";
 
 class Login extends React.Component {
   render() {
-    console.log("login",this.props);
+    // console.log("login",this.props);
     const handleLogin = (id) => {
       this.props.dispatch(setAuthedUser(id));
     };
