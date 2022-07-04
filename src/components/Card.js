@@ -1,9 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export function CardQuestion({ entry }) {
-  const [isChecked, seIisChecked] = React.useState("");
-  console.log(isChecked);
+export function CardQuestion({ entry, handleSubmit }) {
+  const [optionValue, setOptionValue] = React.useState("");
+
+  const handleClick = () => {
+    const answerObject = {
+      qid: entry.id,
+      authedUser: entry.authedUser,
+      answer: optionValue,      
+    }
+    handleSubmit(answerObject)
+  }
   return (
     <div className="card m-1" style={{ width: "30rem" }}>
       <div className="card-header">
@@ -19,7 +27,7 @@ export function CardQuestion({ entry }) {
             type="radio"
             name="flexRadioDefault"
             id="optionOne"
-            onChange={(e) => seIisChecked(e.target.id)}
+            onChange={(e) => setOptionValue(e.target.id)}
           />
           <label className="form-check-label" htmlFor="optionOne">
             {entry.optionOne.text}
@@ -32,14 +40,18 @@ export function CardQuestion({ entry }) {
             type="radio"
             name="flexRadioDefault"
             id="optionTwo"
-            onChange={(e) => seIisChecked(e.target.id)}
+            onChange={(e) => setOptionValue(e.target.id)}
           />
           <label className="form-check-label" htmlFor="optionTwo">
             {entry.optionTwo.text}
           </label>
         </div>
 
-        <button type="button" className="btn btn-primary">
+        <button 
+          onClick={handleClick}
+          disabled={!optionValue}
+          type="button" 
+          className={`btn btn-${!optionValue ? 'secondary' : 'primary'}`}>
           Submit
         </button>
       </div>
@@ -108,7 +120,7 @@ export function CardPoll({ entry }) {
               role="progressbar"
               style={{ width: `${perOne ? perOne : "12"}%` }}
             >
-              {perOne ? perOne : "0"}%
+              {perOne ? Math.round(perOne) : "0"}%
             </div>
           </div>
           <p>
@@ -132,7 +144,7 @@ export function CardPoll({ entry }) {
               role="progressbar"
               style={{ width: `${perTwo ? perTwo : "12"}%` }}
             >
-              {perTwo}%
+              {perTwo ? Math.round(perTwo) : "0"}%
             </div>
           </div>
           <p>

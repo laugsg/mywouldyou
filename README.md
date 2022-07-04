@@ -45,8 +45,8 @@ Project [Rubric][5]
 * New Question Component
     1. [x] The form is available at `/add`.
     2. [x] shows “Would You Rather” and a form for two options.
-    3. [ ] Upon submitting the user is taken to home page.
-    4. [ ] The new question appears in unanswered questions.
+    3. [x] Upon submitting the user is taken to home page.
+    4. [x] The new question appears in unanswered questions.
 
 * Leader Board Component
     1. [x] The Leaderboard is available at `/leaderboard`
@@ -98,7 +98,7 @@ Project [Rubric][5]
 
 * Phase B: upload data (Presentational events)
     * Step 1 - Event handlers=> console.log
-    * Step 2 - Replace console.log by dispatch (actions)
+    * Step 2 - [Replace console.log by dispatch (actions)](readme-assets/replace-consolelog-by-dispatch.md)
 
 ### Hierarchy of Components
 ![Hierarchy of Components](readme-assets/Hierarchy.png)

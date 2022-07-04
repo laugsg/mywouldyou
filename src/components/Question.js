@@ -6,9 +6,22 @@ import { newDataObjectQuestions } from "../utils/helpers";
 // Components
 import List from "./List";
 import { CardPoll, CardQuestion } from "./Card";
+import RedirectComponent from "./RedirectComponent";
+import { handleSaveAnswer } from "../actions/questions";
+import { handlerUserAnswer } from "../actions/users";
 
 class QuestionComponent extends React.Component {
+  state = {
+    savedA: false
+  }
   render() {
+
+    const handleSubmit = (answerObject) => {
+      this.props.dispatch(handleSaveAnswer(answerObject))
+      this.props.dispatch(handlerUserAnswer(answerObject))
+      this.setState({savedA: true})
+    }
+
     /** Options or Results
      * filter unanswered, display questions if question_id is found
      * should else return poll results (not found)
@@ -20,11 +33,14 @@ class QuestionComponent extends React.Component {
     if (question.length) {
       question.map( obj => obj['authedUser'] = this.props.authedUser)
       return (
-        question && (
+        this.state.savedA
+        ? <RedirectComponent desiredPath={'/'}/>
+        : (
           <List
             componentUsed={CardQuestion}
             componentPropName="entry"
             data={question}
+            customProps={{handleSubmit}}
           />
         )
       );

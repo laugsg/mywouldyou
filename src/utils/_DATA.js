@@ -195,11 +195,11 @@ export function _saveQuestion(question) {
 /**
  * Receives an answer and saves it in two tables (let users/questions).
  * 
- * Within users it matchs the user whom who it, 
+ * Within users, it matchs the user who answer it, 
  * then set the question id as key and the answer as value.
  * 
- * Within questions it matchs the question answered,
- * then includes in 'votes' field the id of the user who answered.
+ * Within questions, it matchs the question answered,
+ * then the id of the user who answered it's included in 'votes' field.
  * @param {string} authedUser 
  * @param {string} qid 
  * @param {string} answer 

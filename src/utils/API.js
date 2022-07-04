@@ -1,7 +1,8 @@
 import {
     _getUsers,
     _getQuestions,
-    _saveQuestion
+    _saveQuestion,
+    _saveQuestionAnswer
 } from './_DATA'
 
 /** getInitialData
@@ -26,4 +27,13 @@ export function getInitialData(){
  */
 export function saveQuestion(unformattedQuestion){
     return _saveQuestion(unformattedQuestion)
+}
+
+/**
+ * Receives an answer object containing
+ * authedUser, qid, answer as option choosen,
+ * finally returns res() (probably a promise)
+ */
+export function saveQuestionAnswer(answerObject){
+    return _saveQuestionAnswer(answerObject)
 }
