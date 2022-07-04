@@ -100,22 +100,6 @@ Project [Rubric][5]
     * Step 1 - Event handlers=> console.log
     * Step 2 - Replace console.log by dispatch (actions)
 
-* Phase C: aritmethic operations
-    * Step 1 - Operations needed recognition
-    * Step 2 - Create base operations helpers
-    * Step 3 - Create advance operations helpers
-    * Step 4 - Require operations as API
-
-* Phase D: logic operations
-    * Step 1 - Matchs needed recognition (users/quesstions)
-    * Step 3 - Data Helpers 
-        * move data across app (unanswered/answered)
-        * upload data to store
-
-
-
-
-
 ### Hierarchy of Components
 ![Hierarchy of Components](readme-assets/Hierarchy.png)
 ### Events Happen
