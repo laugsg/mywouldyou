@@ -1,6 +1,7 @@
 import {
     _getUsers,
-    _getQuestions
+    _getQuestions,
+    _saveQuestion
 } from './_DATA'
 
 /** getInitialData
@@ -17,4 +18,12 @@ export function getInitialData(){
         users,
         questions
     }))
+}
+
+/**
+ * returns formattedQuestion
+ * from receiving unformatted question
+ */
+export function saveQuestion(unformattedQuestion){
+    return _saveQuestion(unformattedQuestion)
 }

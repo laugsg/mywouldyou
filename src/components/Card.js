@@ -181,7 +181,7 @@ export function CardFormNewQuestion({ handleSubmit }) {
   const maxChar = 5
 
   const handleClick = () => {
-    handleSubmit()
+    handleSubmit(optionOne, optionTwo)
   };
   return (
     <form className="card m-1" style={{ width: "20rem" }}>
