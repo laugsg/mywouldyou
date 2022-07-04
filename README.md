@@ -7,8 +7,8 @@ Sample Project [Video][4]
 Project [Rubric][5]
 
 * 404 Error Page
-    1. [ ] and shows a 404 page if that poll does not exist. 
-    2. [ ] new polls not accessible by url showing a 404 page
+    1. [x] and shows a 404 page if that poll does not exist. 
+    2. [x] new polls not accessible by url showing a 404 page
 
 * log in & log out
     1. [x] Not logged in Users are not allowed to see poll/results
@@ -21,7 +21,7 @@ Project [Rubric][5]
     3. [x] The unanswered questions are shown by default.
     4. [x] Question in correct category (answered/Unanswered)
     5. [x] An answered question links its details.
-    6. [ ] Order is from recent to old.
+    6. [x] Order is from recent to old.
  
 * Questions Component
     1. [x] poll details at `questions/:question_id`
@@ -39,8 +39,8 @@ Project [Rubric][5]
              3. [x] the percentage of votes for that option.
    
     4. [ ] Upon voting:
-          1. [ ] The user’s response is recorded
-          2. [ ] the question appears in the “Answered” column.
+          1. [x] The user’s response is recorded
+          2. [x] the question appears in the “Answered” column.
 
 * New Question Component
     1. [x] The form is available at `/add`.
