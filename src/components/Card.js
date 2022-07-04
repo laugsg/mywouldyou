@@ -183,6 +183,7 @@ export function CardFormNewQuestion({ handleSubmit }) {
   const handleClick = () => {
     handleSubmit(optionOne, optionTwo)
   };
+  
   return (
     <form className="card m-1" style={{ width: "20rem" }}>
       <div className="card-header">
