@@ -24,6 +24,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
+        <React.Fragment>
         <Switch>
           <Route exact path="/login">
             <div className="d-flex flex-column align-items-center p-5">
@@ -46,6 +47,7 @@ class App extends React.Component {
             <PageWrapper componentUsed={Error404} />
           </Route>
         </Switch>
+        </React.Fragment>
       </Router>
     );
   }

@@ -124,3 +124,16 @@ export function newDataObjectQuestions(state) {
     questions: newDataObjectForQuestions(state.questions, state.users),
   };
 }
+
+
+/**
+ * A function that use LocalStorage.setItem('requestURL', this.props.location.pathname)
+ * to save the path which fires this.props.history.action === 'POP',
+ * then if authedUser is valid, a ternary operator will replace the pathname of RedirectComponent
+ * by requestURL
+ */
+
+export function saveRequestURL(location){
+  localStorage.setItem('requestURL', location)
+  return true
+}
