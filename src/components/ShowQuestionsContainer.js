@@ -10,6 +10,8 @@ import { CardQuestionClass } from "./Card";
 
 class ShowQuestionsContainer extends React.Component {
   render() {
+    this.props.unanswered.sort((a,b) => b.timestamp - a.timestamp)
+    this.props.answered.sort((a,b) => b.timestamp - a.timestamp) 
     return (
       this.props.unanswered && (
         <>
